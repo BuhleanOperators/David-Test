@@ -16,8 +16,6 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 public class CANRollerSubsystem extends SubsystemBase {
   private final SparkMax rollerMotor;
 
-  //Test
-  private final SparkMax test1Motor;
 
   public CANRollerSubsystem() {
     // Set up the roller motor as a brushed motor
@@ -36,13 +34,6 @@ public class CANRollerSubsystem extends SubsystemBase {
     rollerConfig.voltageCompensation(RollerConstants.ROLLER_MOTOR_VOLTAGE_COMP);
     rollerConfig.smartCurrentLimit(RollerConstants.ROLLER_MOTOR_CURRENT_LIMIT);
     rollerMotor.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
-//Test Motor Current Limit
-    rollerConfig.smartCurrentLimit(RollerConstants.TEST1_ROLLER_MOTOR_CURRENT_LIMIT);
-    //Test
-    test1Motor = new SparkMax(RollerConstants.TEST1_MOTOR_ID, MotorType.kBrushless);
-    test1Motor.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-    test1Motor.setCANTimeout(250);
   }
 
   @Override
@@ -54,3 +45,6 @@ public class CANRollerSubsystem extends SubsystemBase {
     rollerMotor.set(forward - reverse);
   }
 }
+
+
+

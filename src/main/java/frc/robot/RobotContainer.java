@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.RollerConstants;
+import frc.robot.Constants.Test1Constants;
 import frc.robot.commands.AutoCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.RollerCommand;
+import frc.robot.commands.Test1Command;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
+import frc.robot.subsystems.CANTest1Subsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -29,6 +32,7 @@ public class RobotContainer {
   // The robot's subsystems
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANRollerSubsystem rollerSubsystem = new CANRollerSubsystem();
+  private final CANTest1Subsystem Test1Subsystem = new CANTest1Subsystem();
 
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(
@@ -101,10 +105,10 @@ public class RobotContainer {
         rollerSubsystem));
 // Test Button 
   test1Controller.x()
-    .whileTrue(new RollerCommand(() -> RollerConstants.ROLLER_EJECT_VALUE, () -> 0, rollerSubsystem));
+    .whileTrue(new Test1Command(() -> Test1Constants.ROLLER_EJECT_VALUE, () -> 0, Test1Subsystem));
 // Reverse Test Button
   test1Controller.a()
-    .whileTrue(new RollerCommand(() -> RollerConstants.TEST1_ROLLER_EJECT_VALUE,() -> 0, rollerSubsystem));
+    .whileTrue(new Test1Command(() -> Test1Constants.TEST1_ROLLER_EJECT_VALUE,() -> 0, Test1Subsystem));
 
   }
 
