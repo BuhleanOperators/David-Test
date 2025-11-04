@@ -103,15 +103,23 @@ public class RobotContainer {
         () -> operatorController.getRightTriggerAxis(),
         () -> operatorController.getLeftTriggerAxis(),
         rollerSubsystem));
-// Test Button 
-  test1Controller.x()
-    .whileTrue(new Test1Command(() -> Test1Constants.ROLLER_EJECT_VALUE, () -> 0, Test1Subsystem));
-// Reverse Test Button
-  test1Controller.a()
-    .whileTrue(new Test1Command(() -> Test1Constants.TEST1_ROLLER_EJECT_VALUE,() -> 0, Test1Subsystem));
+    // Test Button 
+    test1Controller.x()
+      .whileTrue(new Test1Command(() -> Test1Constants.ROLLER_EJECT_VALUE, () -> 0, Test1Subsystem));
+    test1Controller.x()
+      .whileFalse(new Test1Command(() -> 0 ,() -> 0, Test1Subsystem));
+    // Reverse Test Button
+    test1Controller.a()
+      .whileTrue(new Test1Command(() -> Test1Constants.TEST1_ROLLER_EJECT_VALUE,() -> 0, Test1Subsystem));
+    test1Controller.a()
+      .whileFalse(new Test1Command(() -> 0,() -> 0, Test1Subsystem));
 
+    // Bumper
+    test1Controller.rightBumper()
+      .whileTrue(new Test1Command(() -> Test1Constants.ROLLER_EJECT_VALUE, () -> 0, Test1Subsystem));
+      test1Controller.leftBumper()
+      .whileTrue(new Test1Command(() -> 0, () -> 0, Test1Subsystem));
   }
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
